@@ -53,7 +53,11 @@ pod 'TGCameraViewController'
 ```
 pod install
 ```
+* On Swift, add this to your Bridging Header:
 
+```
+#import "TGCameraViewController.h"
+```
 <em>Alternatively you can directly download the [latest code version](https://github.com/tdginternet/TGCameraViewController/archive/master.zip) add  drag and drop all files at <strong>TGCameraViewController</strong> folder onto your project.</em>
 
 ---
@@ -63,6 +67,7 @@ pod install
 
 #### Take photo
 
+#####Objective-C
 ```obj-c
 #import "TGCameraViewController.h"
 
@@ -124,6 +129,46 @@ pod install
 }
 
 @end
+```
+#####Swift
+```swift
+import UIKit
+class ViewController: UIViewController,TGCameraDelegate {
+
+  @IBAction func takePhotoTapped(sender: AnyObject)
+  {
+    let navigationController = TGCameraNavigationController.newWithCameraDelegate(self)
+    self.presentViewController(navigationController, animated: true, completion: nil)
+  }
+  
+  //MARK: TGCameraDelegate optional
+  
+  func cameraWillTakePhoto() {
+
+  }
+  func cameraDidSavePhotoAtPath(assetURL: NSURL!) {
+    
+  }
+  func cameraDidSavePhotoWithError(error: NSError!) {
+    
+  }
+
+  //MARK: TGCameraDelegate required
+  func cameraDidCancel()
+  {
+    self.dismissViewControllerAnimated(true, completion: nil)
+  }
+  func cameraDidTakePhoto(image: UIImage!)
+  {
+    self.dismissViewControllerAnimated(true, completion: nil)
+  }
+  func cameraDidSelectAlbumPhoto(image: UIImage!)
+  {
+    self.dismissViewControllerAnimated(true, completion: nil)
+  }
+}
+
+
 ```
 
 #### Choose photo
