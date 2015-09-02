@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TGCameraAuthorizationViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2V-T3-jXs" userLabel="Top View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                    <subviews>
+                        <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chg-0W-XBx">
+                            <rect key="frame" x="550" y="5" width="50" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="GTO-kd-C7B"/>
+                                <constraint firstAttribute="height" constant="40" id="zfH-sA-cuk"/>
+                            </constraints>
+                            <state key="normal" image="CameraGrid">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKR-rf-Oec" userLabel="Toggle">
+                            <rect key="frame" x="0.0" y="5" width="50" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="39Q-oi-TXk"/>
+                                <constraint firstAttribute="height" constant="40" id="UhS-ZY-L7u"/>
+                            </constraints>
+                            <state key="normal" image="CameraToggle">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="chg-0W-XBx" secondAttribute="trailing" id="3f8-0U-alC"/>
+                        <constraint firstItem="chg-0W-XBx" firstAttribute="top" secondItem="t2V-T3-jXs" secondAttribute="top" constant="5" id="GNU-Hh-zJr"/>
+                        <constraint firstItem="uKR-rf-Oec" firstAttribute="leading" secondItem="t2V-T3-jXs" secondAttribute="leading" id="KIQ-eV-pPr"/>
+                        <constraint firstItem="uKR-rf-Oec" firstAttribute="top" secondItem="t2V-T3-jXs" secondAttribute="top" constant="5" id="Tw0-pz-lmR"/>
+                        <constraint firstAttribute="height" constant="50" id="oWg-Is-Vfg"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-xi-UL2" userLabel="Bottom View">
+                    <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                    <subviews>
+                        <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kj1-pX-VbD" userLabel="Flash">
+                            <rect key="frame" x="512" y="10" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="NeQ-R1-u8b"/>
+                                <constraint firstAttribute="width" constant="80" id="U0J-UF-VKM"/>
+                            </constraints>
+                            <state key="normal" image="CameraFlashAuto">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8O-nu-6Iw" userLabel="Shot">
+                            <rect key="frame" x="261" y="11" width="78" height="78"/>
+                            <state key="normal" image="CameraShot">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujD-5V-ufC" userLabel="Close">
+                            <rect key="frame" x="8" y="10" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="OE7-z6-xvR"/>
+                                <constraint firstAttribute="width" constant="80" id="Pe9-lS-uFc"/>
+                            </constraints>
+                            <state key="normal" image="CameraClose">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="closeTapped" destination="-1" eventType="touchUpInside" id="SyP-lg-2Xh"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="2M0-Tx-wbh"/>
+                        <constraint firstAttribute="centerX" secondItem="Z8O-nu-6Iw" secondAttribute="centerX" id="LQT-YW-XH0"/>
+                        <constraint firstAttribute="centerY" secondItem="Z8O-nu-6Iw" secondAttribute="centerY" id="Tga-6B-L8h"/>
+                        <constraint firstItem="ujD-5V-ufC" firstAttribute="leading" secondItem="SO6-xi-UL2" secondAttribute="leading" constant="8" id="qKU-4v-duU"/>
+                        <constraint firstAttribute="bottom" secondItem="kj1-pX-VbD" secondAttribute="bottom" constant="10" id="uer-4z-0mj"/>
+                        <constraint firstAttribute="trailing" secondItem="kj1-pX-VbD" secondAttribute="trailing" constant="8" id="vGk-iq-wuN"/>
+                        <constraint firstAttribute="bottom" secondItem="ujD-5V-ufC" secondAttribute="bottom" constant="10" id="vvO-BG-TCW"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jH3-dv-6EG" userLabel="Info View">
+                    <rect key="frame" x="145" y="164" width="310" height="272"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Allow access to your camera to start taking pictures with app" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="244" translatesAutoresizingMaskIntoConstraints="NO" id="52v-Pz-Qrc">
+                            <rect key="frame" x="8" y="38" width="294" height="65"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.35686275360000003" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1. Open the Settings of your device" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IV-OX-z7n">
+                            <rect key="frame" x="8" y="111" width="294" height="19"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                            <color key="textColor" red="1" green="0.35686275360000003" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2. Go to Privacy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BA-cA-IdH">
+                            <rect key="frame" x="8" y="138" width="294" height="20"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                            <color key="textColor" red="1" green="0.35686275360000003" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3. Go the Camera" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fh-1w-cmk">
+                            <rect key="frame" x="8" y="166" width="294" height="20"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                            <color key="textColor" red="1" green="0.35686275360000003" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4. Activate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFi-uS-X6j">
+                            <rect key="frame" x="8" y="194" width="294" height="20"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                            <color key="textColor" red="1" green="0.35686275360000003" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvw-Fr-fLT">
+                            <rect key="frame" x="8" y="8" width="294" height="22"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                            <color key="textColor" red="1" green="0.35686275360000003" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="272" id="Asp-rg-yho"/>
+                        <constraint firstAttribute="width" constant="310" id="GOQ-PL-RXS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="tintColor" red="1" green="0.35686275360000003" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="SO6-xi-UL2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1bc-JK-qwb"/>
+                <constraint firstAttribute="trailing" secondItem="t2V-T3-jXs" secondAttribute="trailing" id="8GJ-53-Bgd"/>
+                <constraint firstAttribute="trailing" secondItem="SO6-xi-UL2" secondAttribute="trailing" id="C5R-dB-eOx"/>
+                <constraint firstItem="t2V-T3-jXs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CJT-pO-3zU"/>
+                <constraint firstAttribute="centerX" secondItem="jH3-dv-6EG" secondAttribute="centerX" id="SGk-11-3Me"/>
+                <constraint firstAttribute="centerY" secondItem="jH3-dv-6EG" secondAttribute="centerY" id="fmC-E4-yqn"/>
+                <constraint firstAttribute="bottom" secondItem="SO6-xi-UL2" secondAttribute="bottom" id="gSM-E0-QY3"/>
+                <constraint firstItem="t2V-T3-jXs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lEc-Ma-tPz"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="182" y="136"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CameraClose" width="26" height="26"/>
+        <image name="CameraFlashAuto" width="41" height="41"/>
+        <image name="CameraGrid" width="26" height="26"/>
+        <image name="CameraShot" width="78" height="78"/>
+        <image name="CameraToggle" width="26" height="26"/>
+    </resources>
+</document>
