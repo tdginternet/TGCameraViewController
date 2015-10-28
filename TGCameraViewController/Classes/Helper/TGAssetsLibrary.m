@@ -24,6 +24,7 @@
 //  THE SOFTWARE.
 
 #import "TGAssetsLibrary.h"
+#import "TGCameraViewController.h"
 
 @interface TGAssetsLibrary ()
 
@@ -119,7 +120,7 @@
 
 - (void)saveImage:(UIImage *)image resultBlock:(TGAssetsResultCompletion)resultBlock failureBlock:(TGAssetsFailureCompletion)failureBlock;
 {
-    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
+    NSString *appName = [[[NSBundle bundleForClass:[TGCameraViewController class]] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
     [self saveImage:image withAlbumName:appName resultBlock:resultBlock failureBlock:failureBlock];
 }
 
