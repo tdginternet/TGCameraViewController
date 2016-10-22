@@ -164,7 +164,7 @@
 		return;
 	}
 	
-	NSURL *assetURL = [NSURL URLWithString: filePath];
+	NSURL *assetURL = [NSURL fileURLWithPath: filePath];
 	
 	resultBlock(assetURL);
 }
