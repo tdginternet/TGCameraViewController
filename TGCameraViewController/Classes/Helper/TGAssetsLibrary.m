@@ -204,20 +204,21 @@
 
 - (NSString *)directory
 {
-    NSMutableString *path = [NSMutableString new];
-    [path appendString:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
-    [path appendString:@"/Images/"];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSError *error;
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
-        
-        if (error) {
-            return nil;
-        }
-    }
-    
-    return path;
+	NSMutableString *path = [NSMutableString new];
+	NSURL *documentPath = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+	[path appendString: documentPath.path];
+	[path appendString:@"/Images/"];
+	
+	if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+		NSError *error;
+		[[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
+		
+		if (error) {
+			return nil;
+		}
+	}
+	
+	return path;
 }
 
 @end
