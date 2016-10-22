@@ -138,30 +138,35 @@
 
 - (void)saveJPGImageAtDocumentDirectory:(UIImage *)image resultBlock:(TGAssetsResultCompletion)resultBlock failureBlock:(TGAssetsFailureCompletion)failureBlock
 {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd_HH:mm:SSSSZ"];
-    
-    NSString *directory = [self directory];
-    
-    if (!directory) {
-        failureBlock(nil);
-        return;
-    }
-    
-    NSString *fileName = [[dateFormatter stringFromDate:[NSDate date]] stringByAppendingPathExtension:@"jpg"];
-    NSString *filePath = [directory stringByAppendingString:fileName];
-    
-    if (filePath == nil) {
-        failureBlock(nil);
-        return;
-    }
-    
-    NSData *data = UIImageJPEGRepresentation(image, 1);
-    [data writeToFile:filePath atomically:YES];
-    
-    NSURL *assetURL = [NSURL URLWithString:filePath];
-    
-    resultBlock(assetURL);
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSDateFormatter *dateFormatter = [NSDateFormatter new];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd_HH:mm:SSSSZ"];
+	
+	NSString *directory = [self directory];
+	
+	if (!directory) {
+		failureBlock(nil);
+		return;
+	}
+	
+	NSString *fileName = [[dateFormatter stringFromDate:[NSDate date]] stringByAppendingPathExtension:@"jpg"];
+	NSString *filePath = [directory stringByAppendingString:fileName];
+	
+	if (filePath == nil) {
+		failureBlock(nil);
+		return;
+	}
+	
+	NSData *data = UIImageJPEGRepresentation(image, 1);
+	
+	if (![fileManager createFileAtPath:filePath contents:data attributes:nil]) {
+		failureBlock(nil);
+		return;
+	}
+	
+	NSURL *assetURL = [NSURL URLWithString: filePath];
+	
+	resultBlock(assetURL);
 }
 
 #pragma mark -
