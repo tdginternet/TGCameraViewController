@@ -28,7 +28,7 @@
 @interface TGAssetsLibrary ()
 
 - (void)addAssetURL:(NSURL *)assetURL toAlbum:(NSString *)albumName resultBlock:(TGAssetsResultCompletion)resultBlock failureBlock:(TGAssetsFailureCompletion)failureBlock;
-- (NSString *)directory;
+- (NSString *)directoryWithError:(NSError **)error;
 
 @end
 
@@ -62,7 +62,7 @@
 
 - (NSArray *)loadImagesFromDocumentDirectory
 {
-    NSString *directory = [self directory];
+    NSString *directory = [self directoryWithError:nil];
     
     if (directory == nil) {
         return nil;
@@ -140,11 +140,12 @@
 {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"yyyy-MM-dd_HH:mm:SSSSZ"];
-    
-    NSString *directory = [self directory];
+
+    NSError *error = nil;
+    NSString *directory = [self directoryWithError:&error];
     
     if (!directory) {
-        failureBlock(nil);
+        failureBlock(error);
         return;
     }
     
@@ -202,22 +203,21 @@
     } failureBlock:failureBlock];
 }
 
-- (NSString *)directory
+- (NSString *)directoryWithError:(NSError **)outputError
 {
-    NSMutableString *path = [NSMutableString new];
-    [path appendString:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
-    [path appendString:@"/Images/"];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSError *error;
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
-        
+    NSURL *documentURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *imageDirectoryPath = [documentURL.relativePath stringByAppendingPathComponent:@"Images"];
+
+    if (![[NSFileManager defaultManager] fileExistsAtPath:imageDirectoryPath]) {
+        NSError *error = nil;
+        [[NSFileManager defaultManager] createDirectoryAtPath:imageDirectoryPath withIntermediateDirectories:NO attributes:nil error:&error];
         if (error) {
+            *outputError = error;
             return nil;
         }
     }
     
-    return path;
+    return imageDirectoryPath;
 }
 
 @end
