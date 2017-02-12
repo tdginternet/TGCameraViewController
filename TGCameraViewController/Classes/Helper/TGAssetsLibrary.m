@@ -158,9 +158,9 @@
     
     NSData *data = UIImageJPEGRepresentation(image, 1);
     [data writeToFile:filePath atomically:YES];
-    
-    NSURL *assetURL = [NSURL URLWithString:filePath];
-    
+     
+    NSURL *assetURL = [NSURL fileURLWithPath:filePath];
+
     resultBlock(assetURL);
 }
 
