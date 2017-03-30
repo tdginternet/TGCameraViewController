@@ -1,0 +1,17 @@
+/* Class = "IBUILabel"; text = "Take photos"; ObjectID = "Lvw-Fr-fLT"; */
+"Lvw-Fr-fLT.text" = "Tire fotos";
+
+/* Class = "IBUILabel"; text = "Allow access to your camera to start taking pictures with app"; ObjectID = "52v-Pz-Qrc"; */
+"52v-Pz-Qrc.text" = "Permita o acesso à sua câmera";
+
+/* Class = "IBUILabel"; text = "1. Open the Settings of your device"; ObjectID = "5IV-OX-z7n"; */
+"5IV-OX-z7n.text" = "1. Abra os Ajustes do seu dispositivo";
+
+/* Class = "IBUILabel"; text = "2. Go to Privacy"; ObjectID = "7BA-cA-IdH"; */
+"7BA-cA-IdH.text" = "2. Acesse a Privacidade";
+
+/* Class = "IBUILabel"; text = "3. Go the Camera"; ObjectID = "8fh-1w-cmk"; */
+"8fh-1w-cmk.text" = "3. Acesse a Câmera";
+
+/* Class = "IBUILabel"; text = "4. Activate"; ObjectID = "bFi-uS-X6j"; */
+"bFi-uS-X6j.text" = "4. Ative";
