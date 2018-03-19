@@ -203,6 +203,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 |kTGCameraOptionHiddenFilterButton|NSNumber (YES/NO)|NO|Displays or hides the button that allos the user to filter their photo|
 |kTGCameraOptionSaveImageToAlbum|NSNumber (YES/NO)|NO|Save or not the photo in the camera roll|
 |kTGCameraOptionUseOriginalAspect|NSNumber (YES/NO)|NO|Use the original aspect instead of cropping the image to a square|
+|kTGCameraOptionUseDefaultStatusBarVisibility|NSNumber (YES/NO)|NO|Use current app settings for status bar
 
 ```obj-c
 #import "TGCamera.h"

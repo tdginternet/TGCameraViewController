@@ -32,6 +32,7 @@
 #define kTGCameraOptionHiddenFilterButton @"TGCameraOptionHiddenFilterButton"
 #define kTGCameraOptionSaveImageToAlbum @"TGCameraOptionSaveImageToAlbum"
 #define kTGCameraOptionUseOriginalAspect @"kTGCameraOptionUseOriginalAspect"
+#define kTGCameraOptionUseDefaultStatusBarVisibility @"kTGCameraOptionUseDefaultStatusBarVisibility"
 
 @protocol TGCameraDelegate;
 
