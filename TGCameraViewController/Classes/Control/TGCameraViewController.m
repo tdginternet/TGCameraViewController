@@ -63,6 +63,7 @@
 - (IBAction)albumTapped;
 - (IBAction)toggleTapped;
 - (IBAction)handleTapGesture:(UITapGestureRecognizer *)recognizer;
+- (IBAction)handlePinchZoom:(UIPinchGestureRecognizer *)pinchRecognizer;
 
 - (void)deviceOrientationDidChangeNotification;
 - (AVCaptureVideoOrientation)videoOrientationForDeviceOrientation:(UIDeviceOrientation)deviceOrientation;
@@ -232,6 +233,28 @@
 {
     if ([_delegate respondsToSelector:@selector(cameraDidCancel)]) {
         [_delegate cameraDidCancel];
+    }
+}
+
+- (IBAction)handlePinchZoom:(UIPinchGestureRecognizer *)pinchRecognizer{
+    AVCaptureDevice *device =[AVCaptureDevice defaultDeviceWithMediaType:
+                              AVMediaTypeVideo];
+    AVCaptureDeviceFormat *format = device.activeFormat;
+    CGFloat maxZoomFactor = format.videoMaxZoomFactor;
+    NSArray *formats = device.formats;
+    const CGFloat pinchVelocityDividerFactor = 2.0f;
+    if (pinchRecognizer.state == UIGestureRecognizerStateChanged || pinchRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSError *error = nil;
+        if (![device lockForConfiguration:&error]) {
+            NSLog(@"error: %@", error);
+            return;
+        }
+        CGFloat desiredZoomFactor = device.videoZoomFactor +
+        atan2f(pinchRecognizer.velocity, pinchVelocityDividerFactor);
+        
+        device.videoZoomFactor =   MAX(1.0, MIN(desiredZoomFactor,
+                                                device.activeFormat.videoMaxZoomFactor));
+        [device unlockForConfiguration];
     }
 }
 
