@@ -242,7 +242,7 @@
     AVCaptureDeviceFormat *format = device.activeFormat;
     CGFloat maxZoomFactor = format.videoMaxZoomFactor;
     NSArray *formats = device.formats;
-    const CGFloat pinchVelocityDividerFactor = 2.0f;
+    const CGFloat pinchVelocityDividerFactor = 10.0f;
     if (pinchRecognizer.state == UIGestureRecognizerStateChanged || pinchRecognizer.state == UIGestureRecognizerStateBegan) {
         NSError *error = nil;
         if (![device lockForConfiguration:&error]) {
