@@ -38,7 +38,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 
 @interface TGPhotoViewController ()
-
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imgDone;
 @property (strong, nonatomic) IBOutlet UIImageView *photoView;
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
 @property (strong, nonatomic) IBOutlet TGCameraFilterView *filterView;
@@ -89,6 +89,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _imgDone.image = [_imgDone.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [_imgDone setTintColor:[UIColor blackColor]];
     
     if (CGRectGetHeight([[UIScreen mainScreen] bounds]) <= 480) {
         _topViewHeight.constant = 0;
@@ -142,34 +144,34 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
             [_delegate cameraDidTakePhoto:_photo];
         }
         
-        ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
-        TGAssetsLibrary *library = [TGAssetsLibrary defaultAssetsLibrary];
-        
-        void (^saveJPGImageAtDocumentDirectory)(UIImage *) = ^(UIImage *photo) {
-            [library saveJPGImageAtDocumentDirectory:_photo resultBlock:^(NSURL *assetURL) {
-                if ([_delegate respondsToSelector:@selector(cameraDidSavePhotoAtPath:)]) {
-                    [_delegate cameraDidSavePhotoAtPath:assetURL];
-                }
-            } failureBlock:^(NSError *error) {
-                if ([_delegate respondsToSelector:@selector(cameraDidSavePhotoWithError:)]) {
-                    [_delegate cameraDidSavePhotoWithError:error];
-                }
-            }];
-        };
-        
-        if ([[TGCamera getOption:kTGCameraOptionSaveImageToAlbum] boolValue] && status != ALAuthorizationStatusDenied) {
-            [library saveImage:_photo resultBlock:^(NSURL *assetURL) {
-                if ([_delegate respondsToSelector:@selector(cameraDidSavePhotoAtPath:)]) {
-                    [_delegate cameraDidSavePhotoAtPath:assetURL];
-                }
-            } failureBlock:^(NSError *error) {
-                saveJPGImageAtDocumentDirectory(_photo);
-            }];
-        } else {
-            if ([_delegate respondsToSelector:@selector(cameraDidSavePhotoAtPath:)]) {
-                saveJPGImageAtDocumentDirectory(_photo);
-            }
-        }
+//        ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
+//        TGAssetsLibrary *library = [TGAssetsLibrary defaultAssetsLibrary];
+//
+//        void (^saveJPGImageAtDocumentDirectory)(UIImage *) = ^(UIImage *photo) {
+//            [library saveJPGImageAtDocumentDirectory:_photo resultBlock:^(NSURL *assetURL) {
+//                if ([_delegate respondsToSelector:@selector(cameraDidSavePhotoAtPath:)]) {
+//                    [_delegate cameraDidSavePhotoAtPath:assetURL];
+//                }
+//            } failureBlock:^(NSError *error) {
+//                if ([_delegate respondsToSelector:@selector(cameraDidSavePhotoWithError:)]) {
+//                    [_delegate cameraDidSavePhotoWithError:error];
+//                }
+//            }];
+//        };
+//
+//        if ([[TGCamera getOption:kTGCameraOptionSaveImageToAlbum] boolValue] && status != ALAuthorizationStatusDenied) {
+//            [library saveImage:_photo resultBlock:^(NSURL *assetURL) {
+//                if ([_delegate respondsToSelector:@selector(cameraDidSavePhotoAtPath:)]) {
+//                    [_delegate cameraDidSavePhotoAtPath:assetURL];
+//                }
+//            } failureBlock:^(NSError *error) {
+//                saveJPGImageAtDocumentDirectory(_photo);
+//            }];
+//        } else {
+//            if ([_delegate respondsToSelector:@selector(cameraDidSavePhotoAtPath:)]) {
+//                saveJPGImageAtDocumentDirectory(_photo);
+//            }
+//        }
     }
 }
 

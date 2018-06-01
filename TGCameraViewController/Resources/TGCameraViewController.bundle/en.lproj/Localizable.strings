@@ -6,9 +6,9 @@
   Copyright (c) 2015 Tudo Gostoso Internet. All rights reserved.
 */
 
-"TGCameraViewController-Title" = "Take photos";
-"TGCameraViewController-Subtitle" = "Allow access to your camera to start taking pictures with app";
-"TGCameraViewController-Step1" = "1. Open the Settings of your device";
-"TGCameraViewController-Step2" = "2. Go to Privacy";
-"TGCameraViewController-Step3" = "3. Go the Camera";
-"TGCameraViewController-Step4" = "4. Activate";
+"TGCameraViewController-Title" = "Tomar fotos";
+"TGCameraViewController-Subtitle" = "Permita el acceso a su cámara para comenzar a tomar fotos con la aplicación";
+"TGCameraViewController-Step1" = "1. Abra configuraciones en el dipositivo";
+"TGCameraViewController-Step2" = "2. Busqué la aplicación de Pikmo";
+"TGCameraViewController-Step3" = "3. Ir al permiso de la camara";
+"TGCameraViewController-Step4" = "4. Activarla";
