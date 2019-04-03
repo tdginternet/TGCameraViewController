@@ -1,10 +1,8 @@
-<p align="center">
-  <img src="http://s23.postimg.org/4psw1dtyj/TGCamera_View_Controller.png" alt="TGCameraViewController" title="TGCameraViewController">
-</p>
+# :rotating_light: Warning
 
-<p align="center">
-  <img src="http://s28.postimg.org/eeli1omct/TGCamera_View_Controller.png" alt="TGCameraViewController" title="TGCameraViewController">
-</p>
+This repository is DEPRECATED and not maintaned anymore.
+
+---
 
 Custom camera with AVFoundation. Beautiful, light and easy to integrate with iOS projects. Compatible with Objective-C and Swift.
 
