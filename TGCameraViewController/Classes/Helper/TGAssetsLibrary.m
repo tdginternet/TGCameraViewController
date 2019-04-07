@@ -158,9 +158,9 @@
     
     NSData *data = UIImageJPEGRepresentation(image, 1);
     [data writeToFile:filePath atomically:YES];
-    
-    NSURL *assetURL = [NSURL URLWithString:filePath];
-    
+     
+    NSURL *assetURL = [NSURL fileURLWithPath:filePath];
+
     resultBlock(assetURL);
 }
 
@@ -208,7 +208,7 @@
     [path appendString:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
     [path appendString:@"/Images/"];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
         
