@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -124,6 +124,7 @@
                     </constraints>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="8lp-h9-4Ub" appends="YES" id="9Ra-Em-naV"/>
+                        <outletCollection property="gestureRecognizers" destination="255-bn-8hx" appends="YES" id="hwv-Dv-Z1D"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ni6-M2-hWT" userLabel="Actions View">
@@ -199,7 +200,7 @@
                                 <action selector="shotTapped" destination="-1" eventType="touchUpInside" id="XqW-0H-DD4"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxI-gO-dPX" userLabel="Album" customClass="TGTintedButton">
+                        <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxI-gO-dPX" userLabel="Album" customClass="TGTintedButton">
                             <rect key="frame" x="692" y="10" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="Qit-id-URc"/>
@@ -298,6 +299,11 @@
                 <action selector="handleTapGesture:" destination="-1" id="4eA-y3-VFZ"/>
             </connections>
         </tapGestureRecognizer>
+        <pinchGestureRecognizer id="255-bn-8hx">
+            <connections>
+                <action selector="handlePinchZoom:" destination="-1" id="7zg-iT-XQI"/>
+            </connections>
+        </pinchGestureRecognizer>
     </objects>
     <resources>
         <image name="CameraClose" width="26" height="26"/>
