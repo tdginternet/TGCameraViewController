@@ -138,30 +138,35 @@
 
 - (void)saveJPGImageAtDocumentDirectory:(UIImage *)image resultBlock:(TGAssetsResultCompletion)resultBlock failureBlock:(TGAssetsFailureCompletion)failureBlock
 {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd_HH:mm:SSSSZ"];
-    
-    NSString *directory = [self directory];
-    
-    if (!directory) {
-        failureBlock(nil);
-        return;
-    }
-    
-    NSString *fileName = [[dateFormatter stringFromDate:[NSDate date]] stringByAppendingPathExtension:@"jpg"];
-    NSString *filePath = [directory stringByAppendingString:fileName];
-    
-    if (filePath == nil) {
-        failureBlock(nil);
-        return;
-    }
-    
-    NSData *data = UIImageJPEGRepresentation(image, 1);
-    [data writeToFile:filePath atomically:YES];
-    
-    NSURL *assetURL = [NSURL URLWithString:filePath];
-    
-    resultBlock(assetURL);
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSDateFormatter *dateFormatter = [NSDateFormatter new];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd_HH:mm:SSSSZ"];
+	
+	NSString *directory = [self directory];
+	
+	if (!directory) {
+		failureBlock(nil);
+		return;
+	}
+	
+	NSString *fileName = [[dateFormatter stringFromDate:[NSDate date]] stringByAppendingPathExtension:@"jpg"];
+	NSString *filePath = [directory stringByAppendingString:fileName];
+	
+	if (filePath == nil) {
+		failureBlock(nil);
+		return;
+	}
+	
+	NSData *data = UIImageJPEGRepresentation(image, 1);
+	
+	if (![fileManager createFileAtPath:filePath contents:data attributes:nil]) {
+		failureBlock(nil);
+		return;
+	}
+	
+	NSURL *assetURL = [NSURL fileURLWithPath: filePath];
+	
+	resultBlock(assetURL);
 }
 
 #pragma mark -
@@ -204,20 +209,21 @@
 
 - (NSString *)directory
 {
-    NSMutableString *path = [NSMutableString new];
-    [path appendString:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
-    [path appendString:@"/Images/"];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSError *error;
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
-        
-        if (error) {
-            return nil;
-        }
-    }
-    
-    return path;
+	NSMutableString *path = [NSMutableString new];
+	NSURL *documentPath = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+	[path appendString: documentPath.path];
+	[path appendString:@"/Images/"];
+	
+	if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+		NSError *error;
+		[[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
+		
+		if (error) {
+			return nil;
+		}
+	}
+	
+	return path;
 }
 
 @end
